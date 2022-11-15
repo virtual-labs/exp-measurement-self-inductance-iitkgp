@@ -1,13 +1,120 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
+<!--<a href="./thevenin_website.html" target="popup" onclick="window.open('./thevenin_website.html','name','width=1350,height=675')">Open page in new window</a>
+-->
+<link rel="stylesheet" type="text/css" href="css/exp3_css.css">
+<script class="include" type="text/javascript" src="./jquery_files/jquery.min.js"></script>
+<script class="include" type="text/javascript" src="./jquery_files/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="./jquery_files/shCore.min.js"></script>
+<script type="text/javascript" src="./jquery_files/shBrushJScript.min.js"></script>
+<script type="text/javascript" src="./jquery_files/shBrushXml.min.js"></script>
+<script class="include" type="text/javascript" src="./jquery_files/jqplot.meterGaugeRenderer.min.js"></script>
+<style> 
+#rcorners3 {
+    border-radius: 10px;
+    border: 2px solid #8AC007;
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 5px;   
+}
+</style>
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+</head>
+
+<body background="./images/pg_bg.gif"> 
+<script src="js/exp3_js.js"></script>
+<div id="whole_body" style=" position:relative; margin-left:auto; margin-right:auto; top:0px; width:1120px; height:800px">
+<div style="font-size:40px; text-align:center; height:60px"> <b>Measurement of Self-inductance by Maxwell Bridge</b></div>
+<div id="description" style="background-color:#99CCFF; border-radius:10px; border:2px solid #8AC007; position:absolute; align:left; left:10px; width:620px; height:400px">
+	<h3>&nbsp <u>Procedure:</u> </h3>
+	 <ol type="1">
+		  <li>Apply Supply voltage from with arbitrary frequency. ( V =3v). </li>
+		   <br><li>Set the value of Lx inductor from <b>Set inductor value tab</b>.</li>
+		  <br><li>Choose the values of  C1, R1, R2 and R3  from  the Controls below.</li>
+		  <br><li>Switch on the supply. Observe the milivoltmeter pointer.</li>
+		  <br><li>If "NULL" is achieved, click "Simulate" from <b>measure inductor value tab</b>. Observe calculated values of 
+			unknown Inductance and unknown internal resistance of the inductor.</li>
+		  If better "NULL" is desired, repeat from step 3.<br>
+		  <br><li>Quality factor value of this coil should be less than 10. Q-Factor of unknown coil =(w*La)/Ra.</li>
+	</ol> 
+	
+</div>
+
+<form name='f1'>
+
+<div id="ckt_values1" style="position:relative; border: 2px solid #8AC007; border-radius: 10px; left:650px; height:550px; width:450px">
+	<p>
+	<img src="./images/maxwell_ckt.jpg" alt="Tutorials Point" style="position:absolute; border-radius: 10px; top:0px;  right:0px; height:550px; width:450px"/>
+	<img id="myImage" onclick="changeImage()" src="./images/s1.png" style="cursor: pointer; position:absolute; height:50px; width:50px; top:450px;  right:260px;"/>
+	<div class="example-content" style="position:absolute; top:135px;  right:95px;">
+		<link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+		<div id="chart3" class="plot" style="background-color:transparent; width:250px; height:150px;"></div>
+		<script src="./jquery_files/js_metergauge.js"></script>
+	</div>
+	<input type="number" name="r1" id="r1" min="1" max="11100000" step="1" value="2187124" onchange="pr1.value=this.value;" style="position:absolute; top:155px;  right:290px; width:70px">	
+	<input type="number" name="r2" id="r2" min="1" max="11100000" step="1" value="2588329" onchange="pr2.value=this.value;" style="position:absolute; top:300px;  right:360px; width:70px">	
+	<input type="number" name="r3" id="r3" min="1" max="11100000" step="1" value="1" onchange="pr3.value=this.value;" style="position:absolute; top:70px;  right:45px; width:70px">
+	<input type="number" name="lx1" id="lx1" value="0.045" style="background-color:transparent; position:absolute; top:295px;  right:34px; width:58px" readonly="readonly">
+	<input type="number" name="c1" id="c1" min="0.1" max="111111" step="0.1" value="11100"  onchange="pc1.value=this.value;" style="position:absolute; top:45px;  right:374px; width:58px">
+	
+	<select id="s1" style="background-color:#8DD39D; position:absolute; top:325px; right:30px; width:85px" name="s1" onchange="lx1.value=this.value;">
+		<option selected="" value="0.045">Air Core</option>
+		<option value="0.45">Iron Core</option>
+	</select>
+	
+	<input type="number" name="v1" value="3" id="v1" style="position:absolute; top:470px;  right:200px; width:50px" readonly="readonly">
+	<input type="number" name="f1" value="50" id="f1" style="position:absolute; top:470px;  right:150px; width:40px">
+	<input type="number" name="A1" value="0" id="A1" style="background-color:#E3DE84; text-align:center; position:absolute; top:265px;  right:190px; width:70px" readonly="readonly">
+	</p>
+</div>
+<!-- <div class="example-content" style="position:absolute; top:195px;  right:115px;">
+	<link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+	<div id="chart3" class="plot" style="background-color:transparent; width:250px; height:150px;"></div>
+	<script src="./jquery_files/js_metergauge.js"></script>
+</div> -->
+<div style="position:absolute; top:400px;  left:10px;">
+<ul class="tabs" >
+        <li>
+          <input type="radio" checked name="tabs" id="tab1" onclick="changemode()">
+          <label for="tab1">Set Inductor value</label>
+          <div id="tab-content1" class="tab-content animated fadeIn">
+			&nbsp Choose the type of inductor from the check box out of:<br> 
+			&nbsp&nbsp&nbsp 1) Air Core (Lx = 45mH)
+			&nbsp&nbsp&nbsp 2) Iron Core (Lx = 450mH)<br>
+			&nbsp <b>N.B.:-</b> Range of C1=100pF to 11.111uF (in steps of 100pF ).<br>
+            &nbsp Range of   R1,R2,R3,Rx is 1ohm to 11111110 ohm (in steps of 1ohm ). 
+			</div>
+        </li>
+        <li>
+          <input type="radio" name="tabs" id="tab2" onclick="changemode()">
+          <label for="tab2">Measure Inductor value</label>
+          <div id="tab-content2" class="tab-content animated fadeIn">
+            The current voltmeter reading is: 
+			<input type="number" name="A2" value="0" id="A2" style="background-color:#E3DE84; text-align:center; width:60px" readonly="readonly"> &nbsp mv. Now simulate to get:
+			
+			<br>&nbsp&nbsp&nbsp&nbsp Inductor value (in H):
+			<input type="number" name="l333" value="0" id="l333" style="background-color:#E3DE84; text-align:center;  width:120px" readonly="readonly">
+			<br> Resistance value (in Ohm):
+			<input type="number" name="r333" value="0" id="r333" style="background-color:#E3DE84; text-align:center;  width:120px" readonly="readonly">
+			<br> Quality Factor:
+			<input type="number" name="rd33" value="0" id="rd33" style="background-color:#E3DE84; text-align:center;  width:120px" readonly="readonly">
+			<input type="button" value="Simulate" onclick="simulate_rc()" style="cursor: pointer; background-color:#FE4080; text-align:center; font-size: 25px; position:absolute; top:50px; right:20px; width:150px; height:55px">
+			
+          </div>
+        </li>
+</ul>
+</div>
+<div id="rcorners3" style="background: url(./images/bg5.jpg); position:absolute; top:630px; left:640px; width:605px; color:#FFFFFF" align="center">
+	<b>CONTROLS</b><br>
+	&nbsp&nbsp R1 : 1 Ohm &nbsp <input type="range" name="pr1" id="pr1" min="1" max="11100000" step="1" value="1" onchange="r1.value=this.value;" style="width:340px">&nbsp 11.1 MOhm<BR>	
+	&nbsp&nbsp R2 : 1 Ohm &nbsp <input type="range" name="pr2" id="pr2" min="1" max="11100000" step="1" value="1" onchange="r2.value=this.value;" style="width:340px">&nbsp 11.1 MOhm<BR>	
+	&nbsp&nbsp R3 : 1 Ohm &nbsp <input type="range" name="pr3" id="pr3" min="1" max="11100000" step="1" value="1" onchange="r3.value=this.value;" style="width:340px">&nbsp 11.1 MOhm<BR>	
+	&nbsp&nbsp C1 : 1 nC &nbsp <input type="range" name="pc1" id="pc1" min="0.1" max="111111" step="0.1" value="11100" onchange="c1.value=this.value;" style=" width:340px">&nbsp 111.1 uC<br>
+	
+<br>	
+</div>
+
+</form>
+</div>
 </body>
 </html>
