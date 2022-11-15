@@ -1,1 +1,2 @@
-### Aim of the experiment
+## Objective
+- Measurement of Self-Inductance by Maxwell's Bridge.
