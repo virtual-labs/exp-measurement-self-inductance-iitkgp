@@ -12,3 +12,4 @@
 3. Decide the ranges for R<sub>1</sub> and C<sub>1</sub> through which they can varied without bringing database at noise C.R.O.
  </br>
 4. Repeat the procedure with different values of the product R<sub>2</sub> R<sub>3</sub> and decide upon readings that permit maximum accuracy for the measurement.
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
