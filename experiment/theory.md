@@ -37,3 +37,4 @@ $$ Q = \frac{\omega L}{R_4} = \omega C_1 R_1 \ Phasor \ Diagram: $$
 
 ***Fig 2: Phasor diagram for the circuit shown in Figure 1***
 </div>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
