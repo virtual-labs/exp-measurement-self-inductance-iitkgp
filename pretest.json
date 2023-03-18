@@ -1,0 +1,39 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "The arm of an a.c. Maxwell inductive bridge arranged as follow, AB is a non inductive resistance of 1000Ω in parallel with a capacitor of capacitance 0.5µF, BC is a non inductive resistance of 600Ω, CD is an inductive impedance (unknown) and DA is a non inductive resistance of 400 Ω. If balance is obtain under this condition, determine the inductance and resistance of an arm CD.<br/><p style=\"text-align:center\"><img src=\"./images/quiz1.jpg\" style=\"width:460px;height:330px;\"></p>",
+      "answers": {
+        "a": "R<sub>x</sub> = 140Ω , L<sub>x</sub> =0.16H",
+        "b": "R<sub>x</sub> = 240Ω , L<sub>x</sub> =0.12H",
+        "c": "R<sub>x</sub> = 340Ω , L<sub>x</sub> =0.11H",
+        "d": "R<sub>x</sub> = 440Ω , L<sub>x</sub> =0.15H"
+      },
+      "explanations": {
+        "a": "You have choosen option (a). The answer is incorrect. The correct option is (b).",
+        "b": "You have choosen option (b). The answer is correct",
+        "c": "You have choosen option (c). The answer is incorrect. The correct option is (b).",
+        "d": "You have choosen option (d). The answer is incorrect. The correct option is (b)."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In Maxwell’s Inductance-Capacitance bridge, the frequency ω",
+      "answers": {
+        "a": "Is directly proportional to the inductance in the balanced equation",
+        "b": "Is inversely proportional to the capacitance in the balanced equation",
+        "c": "Is directly proportional to the product of inductance and capacitance",
+        "d": "Does not appear in the balanced equations"
+      },
+      "explanations": {
+        "a": "You have choosen option (a). The answer is incorrect. The correct option is (d).",
+        "b": "You have choosen option (b). The answer is incorrect. The correct option is (d).",
+        "c": "You have choosen option (c). The answer is incorrect. The correct option is (d).",
+        "d": "You have choosen option (d). The answer is correct."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+  ]
+}
