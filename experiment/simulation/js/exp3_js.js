@@ -71,11 +71,17 @@ function changeImage() {
 			im4.removeAttribute('readonly'); im5.removeAttribute('readonly'); im6.removeAttribute('readonly');
 			im7.removeAttribute('readonly'); im8.removeAttribute('readonly'); im9.removeAttribute('readonly');
 			document.f1.A1.value = 0; $('#s1').attr('disabled', false);
+			check=0;
 			perform_meter();
+			document.f1.l333.value = '';
+			document.f1.r333.value = '';
+			document.f1.rd33.value = '';
 		}
 	}
 	function execute_ckt()
 	{
+		if(check==1)
+		{
 		document.f1.A1.value=0;
 		var r1=[], r2=[], r3=[], v1=[], lx1=[], c1=[], f1;
 		var z1=[], i1=[], i2=[], dv=[], dvv;
@@ -101,7 +107,7 @@ function changeImage() {
 		document.f1.A2.value= dvv;
 		perform_meter();
 	}
-
+	}
 
 
 
